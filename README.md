@@ -1,4 +1,7 @@
-Project that displays a scraped set of class abilities from the L2Knight server and allows you to compare them.
+Project that displays a scraped set of class abilities from the [L2Knight](https://lineage2knight.com/) server and allows you to compare them.
+
+![Screenshot1](/screenshots/scr_1.png "Screenshot 1")
+![Screenshot2](/screenshots/scr_2.png "Screenshot 1")
 
 ## Available Scripts
 

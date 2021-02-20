@@ -25,7 +25,7 @@ export function ClassSearch() {
       id="combo-box-demo"
       options={classes}
       getOptionLabel={(op: IClass) => _.startCase(op.className)}
-      style={{ width: 300 }}
+      style={{ width: 600 }}
       value={selection}
       onChange={(event: any, newValue) => {
         if (!newValue)
