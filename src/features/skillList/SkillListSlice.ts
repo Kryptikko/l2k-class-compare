@@ -32,7 +32,7 @@ export const { load } = reducer.actions;
 
 export const loadSkills = createAsyncThunk<string[], undefined>('LOAD_SKILLS', async () => {
   console.log('loadSkills');
-  const res = await axios.get('http://51.81.32.185/l2knight_info/skills_pts/class_5.html');
+  const res = await axios.get('');
   return res.data;
 })
 

@@ -4,11 +4,9 @@ const {JSDOM} = require('jsdom');
 const fs = require('fs');
 const path = require('path');
 
-const OUTPUT_FOLDER = '../output';
+const OUTPUT_FOLDER = './public/output';
 const BASE_URL = 'http://51.81.32.185/l2knight_info/skills_pts/';
 const CLASS_LIST = 'l2knight_skill_tree_list.html';
-
-const PALADIN_ID = 4;
 
 function _getHeaderValue(header) {
   return header.split(':')[1].trim();
@@ -49,7 +47,7 @@ function _scareClass(id) {
         const keys = Array.from(table.querySelectorAll('th')).map(th => th.textContent);
         const skills = Array.from(table.querySelectorAll('tr')).map(tr => {
           const skillData = Array.from(tr.querySelectorAll('td'))
-            .map(td => td.textContent == "" ? td.querySelector('img').src : td.textContent);
+            .map(td => td.textContent === "" ? td.querySelector('img').src : td.textContent);
           return _.zipObject(keys, skillData);
         });
         return {
@@ -70,11 +68,13 @@ function _scareClass(id) {
     return manifest
   })
   .catch((err) => {
-    return {
-      classID: id,
-      className: 'unknown',
-      skillList: [],
-      error: err.response.status
-    }
+    console.log(err);
+    if (err.isAxiosError)
+      return {
+        classID: id,
+        className: 'unknown',
+        skillList: [],
+        error: err.response.status
+      }
   })
 }
