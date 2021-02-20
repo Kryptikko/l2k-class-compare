@@ -24,11 +24,15 @@ axios.get(`${BASE_URL}/${CLASS_LIST}`).then(res => {
 }).then(classIDs => {
   return Promise.all(classIDs.map(_scareClass));
 }).then(res => {
-  console.log(res);
+  const index = res.map(({className, classID}) => ({
+    className, classID
+  }));
+  return _writeToFile(index, 'index');
 })
 
-function _writeToFile(manifest) {
-  const wrPath = path.format({dir: OUTPUT_FOLDER, base: `${manifest.className}.json` });
+function _writeToFile(manifest, fileName = null) {
+  fileName = fileName || manifest.className;
+  const wrPath = path.format({dir: OUTPUT_FOLDER, base: `${fileName}.json` });
   return new Promise((res, rej) => {
     fs.writeFile(wrPath, JSON.stringify(manifest), err => {
       err ? rej(err) : res(manifest);
@@ -68,7 +72,6 @@ function _scareClass(id) {
     return manifest
   })
   .catch((err) => {
-    console.log(err);
     if (err.isAxiosError)
       return {
         classID: id,

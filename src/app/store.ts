@@ -1,11 +1,11 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import counterReducer from '../features/counter/counterSlice';
+import classSearchReducer from '../features/classSearch/classSearchSlice';
 import skillListReducer from '../features/skillList/SkillListSlice';
 
 export const store = configureStore({
   reducer: {
-    counter: counterReducer,
     skillList: skillListReducer,
+    classSearch: classSearchReducer
   },
 });
 

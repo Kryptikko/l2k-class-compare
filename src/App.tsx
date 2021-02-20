@@ -1,16 +1,29 @@
 import React from 'react';
-import { Counter } from './features/counter/Counter';
-import { SkillList } from './features/skillList/SkillList';
-import './App.css';
+import Container from '@material-ui/core/Container';
+import { Header } from './features/Header';
+import { DedupePanel } from './features/DedupePanel';
+
+import Box from '@material-ui/core/Box';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <Counter />
-        <SkillList />
-      </header>
-    </div>
+    <Container
+        style={{height: '100vh'}}
+    >
+      <AppBar>
+        <Toolbar>
+          <Typography variant="h6">Compare Classes</Typography>
+        </Toolbar>
+      </AppBar>
+      <Box mt={2}>
+        <Toolbar />
+        <Header />
+        <DedupePanel />
+      </Box>
+    </Container>
   );
 }
 
